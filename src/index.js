@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import {Table, Form, Button} from 'react-bootstrap'
+import {Table, Form, Button, Alert} from 'react-bootstrap'
 
 const notes = [
 	{
@@ -93,16 +93,18 @@ const Notes = props => (
 
 
 const App = ()=>{
-	const [user,setUser] = useState(null)	
+	const [user,setUser] = useState(null)
+	const [message, setMessage] = useState(null)
 	const padding = {padding: 5}
 	//helper
 	const noteById = id => notes.find(note => note.id === Number(id))
-	const login = (user) => {setUser(user)}
+	const login = (user) => {setUser(user); setMessage(`welcome ${user}`); setTimeout(()=>{setMessage(null)},5000)}
 
 	return (
 		<div className="container">
 			<Router>
 				<div>
+					{(message && <Alert variant="success">{message}</Alert>)}
 					<div>
 						<Link style={padding} to='/'>home</Link>
 						<Link style={padding} to='/notes'>notes</Link>
