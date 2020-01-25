@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import {Table, Form, Button, Alert} from 'react-bootstrap'
+import {Table, Form, Button, Alert, Navbar, Nav} from 'react-bootstrap'
 
 const notes = [
 	{
@@ -90,7 +90,30 @@ const Notes = props => (
 		</Table>
 	</div>
 )
+/////////////////////////////////////
+const Navigation = ({padding,user}) => (
+	<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar.Toggle aria-controls = "responsive-navbar-nav"/>
+		<Navbar.Collapse id="responsive-navbar-nav">
+		<Nav className="mr-auto">
+			<Nav.Link href="#" as="span"><Link style={padding} to="/">home</Link></Nav.Link>
+			<Nav.Link href="#" as="span"><Link style={padding} to="/notes">notes</Link></Nav.Link>
+			<Nav.Link href="#" as="span"><Link style={padding} to="/users">users</Link></Nav.Link>
+			<Nav.Link href="#" as="span">{user ? <em>{user} logged in</em>:<Link to="/login">login</Link>}</Nav.Link>
+		</Nav>
+		</Navbar.Collapse>
+	</Navbar>
 
+)
+
+//prebootstrap navigation
+// <div>
+// 	<Link style={padding} to='/'>home</Link>
+// 	<Link style={padding} to='/notes'>notes</Link>
+// 	<Link style={padding} to='/users'>users</Link>
+// 	{user ? <em>{user} logged in</em> : <Link to="/login">login</Link>}
+// </div>
+/////////////////////////////////////
 
 const App = ()=>{
 	const [user,setUser] = useState(null)
@@ -105,12 +128,8 @@ const App = ()=>{
 			<Router>
 				<div>
 					{(message && <Alert variant="success">{message}</Alert>)}
-					<div>
-						<Link style={padding} to='/'>home</Link>
-						<Link style={padding} to='/notes'>notes</Link>
-						<Link style={padding} to='/users'>users</Link>
-						{user ? <em>{user} logged in</em> : <Link to="/login">login</Link>}
-					</div>
+					<Navigation padding={padding} user={user}/>
+
 					<Route exact path ="/" render={()=><Home />}/>
 					<Route exact path="/notes" render={()=><Notes notes={notes}/>}/>
 					<Route exact path="/notes/:id" render={({match})=>
