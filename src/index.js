@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
 import {Table, Form, Button, Alert, Navbar, Nav} from 'react-bootstrap'
+import {Container} from 'semantic-ui-react'
 
 const notes = [
 	{ id: 1, content: 'HTML on helppoa', important: true, user: 'Matti Luukkainen'},
@@ -67,7 +68,6 @@ const Navigation = ({padding,user}) => (
 		</Nav>
 		</Navbar.Collapse>
 	</Navbar>
-
 )
 
 /////////////////////////////////////
@@ -81,7 +81,7 @@ const App = ()=>{
 	const login = (user) => {setUser(user); setMessage(`welcome ${user}`); setTimeout(()=>{setMessage(null)},5000)}
 
 	return (
-		<div className="container">
+		<Container>
 			<Router>
 				<div>
 					{(message && <Alert variant="success">{message}</Alert>)}
@@ -97,7 +97,7 @@ const App = ()=>{
 					<div><br/><em>Note app, Department of Computer Science 2019</em></div>
 				</div>
 			</Router>
-		</div>
+		</Container>
 	)
 }//App
 
