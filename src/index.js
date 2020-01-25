@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import {Table} from 'react-bootstrap'
+import {Table, Form, Button} from 'react-bootstrap'
 
 const notes = [
 	{
@@ -36,13 +36,28 @@ const LoginNoHistory = (props)=>{
 	return(
 		<div>
 			<h2>login</h2>
-			<form onSubmit={onSubmit}>
-				<div>username: <input/></div>
-				<div>password <input type='password'/></div>
-				<button type="submit">login</button>
-			</form>
+			<Form onSubmit={onSubmit}>
+				<Form.Group>
+					<Form.Label>username:</Form.Label>
+					<Form.Control type="text" name="username"/>
+					<Form.Label>password:</Form.Label>
+					<Form.Control type="password" />
+					<Button type="submit" variant="primary">login</Button>
+				</Form.Group>
+			</Form>
 		</div>
 	)
+	//preBootstrp
+	// return(
+	// 	<div>
+	// 		<h2>login</h2>
+	// 		<form onSubmit={onSubmit}>
+	// 			<div>username: <input/></div>
+	// 			<div>password <input type='password'/></div>
+	// 			<button type="submit">login</button>
+	// 		</form>
+	// 	</div>
+	// )
 }
 const Login = withRouter(LoginNoHistory)
 /////////////////////////////////////
