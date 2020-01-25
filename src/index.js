@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
+import {Table} from 'react-bootstrap'
+
 const notes = [
 	{
 	  id: 1,
@@ -52,15 +54,25 @@ const Note = ({note}) =>(
 	</div>
 )
 /////////////////////////////////////
-
+//prebootstrap notes
+// const Notes = props => (
+// 	<div>
+// 		<h2>Notes</h2>
+// 		<ul>{props.notes.map(note =>
+// 			<li key={note.id}>
+// 				<Link to={`/notes/${note.id}`}>{note.content}</Link>
+// 			</li>							
+// 		)}</ul>
+// 	</div>
+// )
 const Notes = props => (
 	<div>
 		<h2>Notes</h2>
-		<ul>{props.notes.map(note =>
-			<li key={note.id}>
-				<Link to={`/notes/${note.id}`}>{note.content}</Link>
-			</li>							
-		)}</ul>
+		<Table striped>
+			<tbody>
+				{props.notes.map(note=><tr key={note.id}><td><Link to={`/notes/${note.id}`}>{note.content}</Link></td><td>{note.user}</td></tr>)}
+			</tbody>
+		</Table>
 	</div>
 )
 
@@ -73,7 +85,7 @@ const App = ()=>{
 	const login = (user) => {setUser(user)}
 
 	return (
-		<div>
+		<div className="container">
 			<Router>
 				<div>
 					<div>
