@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
 import { Navbar, Nav} from 'react-bootstrap'
-import {Container, Table, Form, Button, Message} from 'semantic-ui-react'
+import {Container, Table, Form, Button, Message, Menu} from 'semantic-ui-react'
 
 
 const notes = [
@@ -67,18 +67,28 @@ const Notes = props => (
 )
 /////////////////////////////////////
 const Navigation = ({padding,user}) => (
-	<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-		<Navbar.Toggle aria-controls = "responsive-navbar-nav"/>
-		<Navbar.Collapse id="responsive-navbar-nav">
-		<Nav className="mr-auto">
-			<Nav.Link href="#" as="span"><Link style={padding} to="/">home</Link></Nav.Link>
-			<Nav.Link href="#" as="span"><Link style={padding} to="/notes">notes</Link></Nav.Link>
-			<Nav.Link href="#" as="span"><Link style={padding} to="/users">users</Link></Nav.Link>
-			<Nav.Link href="#" as="span">{user ? <em>{user} logged in</em>:<Link to="/login">login</Link>}</Nav.Link>
-		</Nav>
-		</Navbar.Collapse>
-	</Navbar>
-)
+	<Menu inverted>
+		<Menu.Item link><Link to="/">home</Link></Menu.Item>
+		<Menu.Item><Link to="/notes">notes</Link></Menu.Item>
+		<Menu.Item><Link to="/users">users</Link></Menu.Item>
+		<Menu.Item>
+			{user ? <em>{user} logged in</em> :<Link to="/login">login</Link>}
+		</Menu.Item>
+	</Menu>
+)	
+// (
+// 	<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+// 		<Navbar.Toggle aria-controls = "responsive-navbar-nav"/>
+// 		<Navbar.Collapse id="responsive-navbar-nav">
+// 		<Nav className="mr-auto">
+// 			<Nav.Link href="#" as="span"><Link style={padding} to="/">home</Link></Nav.Link>
+// 			<Nav.Link href="#" as="span"><Link style={padding} to="/notes">notes</Link></Nav.Link>
+// 			<Nav.Link href="#" as="span"><Link style={padding} to="/users">users</Link></Nav.Link>
+// 			<Nav.Link href="#" as="span">{user ? <em>{user} logged in</em>:<Link to="/login">login</Link>}</Nav.Link>
+// 		</Nav>
+// 		</Navbar.Collapse>
+// 	</Navbar>
+// )
 
 /////////////////////////////////////
 
