@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import { Alert, Navbar, Nav} from 'react-bootstrap'
-import {Container, Table, Form, Button} from 'semantic-ui-react'
+import { Navbar, Nav} from 'react-bootstrap'
+import {Container, Table, Form, Button, Message} from 'semantic-ui-react'
 
 
 const notes = [
@@ -94,7 +94,7 @@ const App = ()=>{
 		<Container>
 			<Router>
 				<div>
-					{(message && <Alert variant="success">{message}</Alert>)}
+					{(message && <Message success>{message}</Message>)}
 					<Navigation padding={padding} user={user}/>
 
 					<Route exact path ="/" render={()=><Home />}/>
