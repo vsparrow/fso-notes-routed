@@ -27,7 +27,7 @@ const users =  ['Matti Luukkainen', 'Juha Tauriainen', 'Arto Hellas']
 
 
 const Home = ()=>(<div><h2>TKTL notes app</h2></div>)
-const Users = ()=>(<div><h2>Users</h2></div>)
+const Users = ()=>(<div><h2>Users</h2><ul>{users.map(u=><li key={u}>{u}</li>)}</ul></div>)
 /////////////////////////////////////
 const LoginNoHistory = (props)=>{
 	const onSubmit=(e)=>{e.preventDefault();props.onLogin('Ironman');props.history.push('/')}
