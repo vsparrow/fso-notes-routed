@@ -88,7 +88,7 @@ const App = ()=>{
 						<Note note={noteById(match.params.id)}/>
 					}/>
 					<Route path="/login" render={()=><Login onLogin={login}/> }/>
-					<Route path="/users" render={()=><Users />}/>
+					<Route path="/users" render={()=> user? <Users /> : <Redirect to="/login"/>}/>
 				</div>
 			</Router>
 		</div>
