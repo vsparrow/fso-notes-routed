@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import {Table, Form, Button, Alert, Navbar, Nav} from 'react-bootstrap'
-import {Container} from 'semantic-ui-react'
+import {Form, Button, Alert, Navbar, Nav} from 'react-bootstrap'
+import {Container, Table} from 'semantic-ui-react'
+
 
 const notes = [
 	{ id: 1, content: 'HTML on helppoa', important: true, user: 'Matti Luukkainen'},
@@ -48,10 +49,17 @@ const Note = ({note}) =>(
 const Notes = props => (
 	<div>
 		<h2>Notes</h2>
-		<Table striped>
-			<tbody>
-				{props.notes.map(note=><tr key={note.id}><td><Link to={`/notes/${note.id}`}>{note.content}</Link></td><td>{note.user}</td></tr>)}
-			</tbody>
+		<Table striped celled>
+			<Table.Body>
+				{props.notes.map(note=>
+					<Table.Row key={note.id}>
+						<Table.Cell>
+							<Link to={`/notes/${note.id}`}>{note.content}</Link>
+						</Table.Cell>
+						<Table.Cell>{note.user}</Table.Cell>
+					</Table.Row>
+				)}
+			</Table.Body>
 		</Table>
 	</div>
 )
