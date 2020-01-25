@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,
 	   Route, Link, Redirect, withRouter} from 'react-router-dom' 
-import {Form, Button, Alert, Navbar, Nav} from 'react-bootstrap'
-import {Container, Table} from 'semantic-ui-react'
+import { Alert, Navbar, Nav} from 'react-bootstrap'
+import {Container, Table, Form, Button} from 'semantic-ui-react'
 
 
 const notes = [
@@ -24,13 +24,15 @@ const LoginNoHistory = (props)=>{
 		<div>
 			<h2>login</h2>
 			<Form onSubmit={onSubmit}>
-				<Form.Group>
-					<Form.Label>username:</Form.Label>
-					<Form.Control type="text" name="username"/>
-					<Form.Label>password:</Form.Label>
-					<Form.Control type="password" />
-					<Button type="submit" variant="primary">login</Button>
-				</Form.Group>
+				<Form.Field>
+					<label>username:</label>
+					<input name="username"/>
+				</Form.Field>
+				<Form.Field>
+					<label>password:</label>
+					<input type="password" />
+					<Button type="submit">login</Button>
+				</Form.Field>
 			</Form>
 		</div>
 	)
