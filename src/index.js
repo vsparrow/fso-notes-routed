@@ -89,6 +89,7 @@ const App = ()=>{
 					}/>
 					<Route path="/login" render={()=><Login onLogin={login}/> }/>
 					<Route path="/users" render={()=> user? <Users /> : <Redirect to="/login"/>}/>
+					<div><br/><em>Note app, Department of Computer Science 2019</em></div>
 				</div>
 			</Router>
 		</div>
